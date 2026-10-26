@@ -80,7 +80,7 @@ The samples are as alike as possible, so you can diff any two of them and see on
 ## Prerequisites
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download)
-- Docker Desktop (or Podman), running
+- Docker Desktop or Podman Desktop, running (see [setup](../exercises/setup.md) for Podman-specific steps)
 - The [Aspire CLI](https://aspire.dev/get-started/install-cli/)
 - Optional: an editor that runs `.http` files (Visual Studio, VS Code with REST Client, or Rider)
 
@@ -140,7 +140,7 @@ From the repository root:
 ```sh
 dotnet BuildTestFormat.cs                 # every sample: build, run the tests, check dotnet format
 dotnet BuildTestFormat.cs epic-saga       # just one sample
-dotnet BuildTestFormat.cs --no-test       # skip the tests (they need Docker)
+dotnet BuildTestFormat.cs --no-test       # skip the tests (they need a container runtime)
 ```
 
 Shared settings live in this folder: `Directory.Build.props`, `Directory.Packages.props` (central package

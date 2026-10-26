@@ -13,7 +13,7 @@ Exercises, runnable samples, and animated diagrams for the **Software Architectu
 Work through [Exercise 0: set up your machine](./exercises/setup.md) **before the workshop**. It installs and checks everything below, and downloads the container images ahead of time.
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download) for the code exercises and the samples
-- Docker Desktop (or Podman), running, for the samples. They start PostgreSQL, SQL Server, RabbitMQ, and Papercut containers.
+- Docker Desktop or Podman Desktop, running, for the samples. They start PostgreSQL, SQL Server, RabbitMQ, and Papercut containers. See [setup](./exercises/setup.md) for Podman-specific steps.
 - The [Aspire CLI](https://aspire.dev/get-started/install-cli/), to run the samples
 - An internet connection. The samples download packages and container images the first time, and the diagrams load their animation engine from a CDN.
 - An editor: Visual Studio, VS Code, or Rider
@@ -42,7 +42,7 @@ The Aspire dashboard uses HTTPS. If you've never trusted the .NET development ce
 
 When the `api` resource in the Aspire dashboard is healthy, open `http://localhost:5240`. A saga sample's home page has a button for each scenario and a **See the diagram** button that plays that saga's animated diagram. Run one sample at a time, because they all use the same ports.
 
-To build and test every sample at once (the tests need Docker), run this from the repository root:
+To build and test every sample at once (the tests need a running container runtime), run this from the repository root:
 
 ```sh
 dotnet BuildTestFormat.cs

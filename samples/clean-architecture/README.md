@@ -27,7 +27,7 @@ TicketTide.Core             The domain model, its rules, its interfaces, and the
 TicketTide.Infrastructure   Implements Core's interfaces: EF Core + PostgreSQL, the payment provider, email
 TicketTide.Web              FastEndpoints endpoints, and the composition root that wires it all together
 TicketTide.AppHost          Aspire: PostgreSQL, Papercut (a fake SMTP server), and the web app
-tests/TicketTide.UnitTests       Core's rules and use cases, with in-memory stand-ins. No Docker needed.
+tests/TicketTide.UnitTests       Core's rules and use cases, with in-memory stand-ins. No container runtime needed.
 tests/TicketTide.EndToEndTests   Starts the whole AppHost and drives it over HTTP
 ```
 
@@ -60,7 +60,7 @@ mediator), specifications, and domain events.
 
 ## Run it
 
-Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker (or Podman) running.
+Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker Desktop or Podman Desktop running. For Podman setup, see [Exercise 0](../../exercises/setup.md).
 
 ```sh
 cd samples/clean-architecture
@@ -125,7 +125,7 @@ dotnet BuildTestFormat.cs clean-architecture             # build, all tests, for
 dotnet BuildTestFormat.cs clean-architecture --no-test   # skip the tests
 ```
 
-Or just the unit tests, which don't need Docker:
+Or just the unit tests, which don't need a container runtime:
 
 ```sh
 cd samples/clean-architecture

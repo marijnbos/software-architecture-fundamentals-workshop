@@ -61,7 +61,7 @@ src/
   TicketTide.Web                   The host: the only project that references the Internal projects
   TicketTide.AppHost               Aspire: SQL Server, Papercut (a fake SMTP server), and the web app
 tests/
-  TicketTide.IntegrationTests      Every module together, on SQLite: the transactions, without Docker
+  TicketTide.IntegrationTests      Every module together, on SQLite: the transactions, without a container runtime
   TicketTide.EndToEndTests         Starts the whole AppHost and drives it over HTTP
 ```
 
@@ -148,7 +148,7 @@ first, and handling a compensation that fails too. Here, nothing was committed, 
 
 ## Run it
 
-Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker (or Podman) running.
+Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker Desktop or Podman Desktop running. For Podman setup, see [Exercise 0](../../exercises/setup.md).
 
 ```sh
 cd samples/atomic-modular-monolith
@@ -202,7 +202,7 @@ dotnet BuildTestFormat.cs atomic-modular-monolith             # build, all tests
 dotnet BuildTestFormat.cs atomic-modular-monolith --no-test   # skip the tests
 ```
 
-Or just the tests that don't need Docker:
+Or just the tests that don't need a container runtime:
 
 ```sh
 cd samples/atomic-modular-monolith

@@ -3,7 +3,7 @@
 //
 //   dotnet BuildTestFormat.cs                 all samples
 //   dotnet BuildTestFormat.cs epic-saga       only samples whose folder name contains "epic-saga"
-//   dotnet BuildTestFormat.cs --no-test       skip the tests (they need Docker)
+//   dotnet BuildTestFormat.cs --no-test       skip the tests (they need a container runtime)
 //
 // Exits with a non-zero code if any step fails for any sample.
 using System.Diagnostics;

@@ -61,7 +61,7 @@ step-by-step history, including every retry. The statuses are `Placed`, `SeatsHe
 
 ## Run it
 
-Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker (or Podman) running.
+Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker Desktop or Podman Desktop running. For Podman setup, see [Exercise 0](../../exercises/setup.md).
 
 ```sh
 cd samples/fairy-tale-saga
@@ -210,7 +210,7 @@ cd samples/fairy-tale-saga
 dotnet test
 ```
 
-The tests start the whole AppHost (PostgreSQL and Papercut containers included), so Docker must be running.
+The tests start the whole AppHost (PostgreSQL and Papercut containers included), so a container runtime must be running.
 [`FairyTaleSagaTests`](tests/TicketTide.EndToEndTests/FairyTaleSagaTests.cs) covers the happy path, the Ticketing
 failure (`202 Pending`, then polling `GET /orders/{id}` until `Confirmed`, with nothing undone), a declined card,
 a sold-out event, and validation.

@@ -111,7 +111,7 @@ the compensations), and `Failed`.
 
 ## Run it
 
-Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker (or Podman) running.
+Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker Desktop or Podman Desktop running. For Podman setup, see [Exercise 0](../../exercises/setup.md).
 
 ```sh
 cd samples/horror-story-saga
@@ -245,8 +245,7 @@ cd samples/horror-story-saga
 dotnet test
 ```
 
-The tests start the whole AppHost (PostgreSQL, RabbitMQ, and Papercut containers), so Docker must be
-running. [`HorrorStorySagaTests`](tests/TicketTide.EndToEndTests/HorrorStorySagaTests.cs) covers the happy path,
+The tests start the whole AppHost (PostgreSQL, RabbitMQ, and Papercut containers), so a container runtime must be running. [`HorrorStorySagaTests`](tests/TicketTide.EndToEndTests/HorrorStorySagaTests.cs) covers the happy path,
 the Ticketing failure and its compensations, a declined card, a sold-out event, an unknown event, and validation.
 
 ## Things to notice

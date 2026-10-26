@@ -104,7 +104,7 @@ If publishing fails, the message is retried, the handler finds the work already 
 
 ## Run it
 
-Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker (or Podman) running.
+Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker Desktop or Podman Desktop running. For Podman setup, see [Exercise 0](../../exercises/setup.md).
 
 ```sh
 cd samples/anthology-saga
@@ -235,7 +235,7 @@ cd samples/anthology-saga
 dotnet test
 ```
 
-The tests start the whole AppHost (PostgreSQL, RabbitMQ, and Papercut containers), so Docker must be running.
+The tests start the whole AppHost (PostgreSQL, RabbitMQ, and Papercut containers), so a container runtime must be running.
 [`AnthologySagaTests`](tests/TicketTide.EndToEndTests/AnthologySagaTests.cs) covers the happy path, Ticketing
 failures retried through the retry queue with nothing undone, a declined card (seats released), a sold-out event, an unknown
 event, and validation.

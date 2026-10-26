@@ -99,7 +99,7 @@ the compensations, so if sending one failed, the retried reply is the only thing
 
 ## Run it
 
-Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker (or Podman) running.
+Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker Desktop or Podman Desktop running. For Podman setup, see [Exercise 0](../../exercises/setup.md).
 
 ```sh
 cd samples/fantasy-fiction-saga
@@ -233,7 +233,7 @@ cd samples/fantasy-fiction-saga
 dotnet test
 ```
 
-The tests start the whole AppHost (PostgreSQL, RabbitMQ, and Papercut containers), so Docker must be running.
+The tests start the whole AppHost (PostgreSQL, RabbitMQ, and Papercut containers), so a container runtime must be running.
 [`FantasyFictionSagaTests`](tests/TicketTide.EndToEndTests/FantasyFictionSagaTests.cs) covers the happy path,
 the Ticketing failure and its compensations, a declined card, a sold-out event, an unknown event, and validation.
 None of the failure tests need to poll: when `POST /orders` returns, every compensation is already done.

@@ -73,7 +73,7 @@ The saga is spread over three handlers, one per module:
 
 ## Run it
 
-Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker (or Podman) running.
+Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker Desktop or Podman Desktop running. For Podman setup, see [Exercise 0](../../exercises/setup.md).
 
 ```sh
 cd samples/time-travel-saga
@@ -235,7 +235,7 @@ cd samples/time-travel-saga
 dotnet test
 ```
 
-The tests start the whole AppHost (PostgreSQL and Papercut containers included), so Docker must be running.
+The tests start the whole AppHost (PostgreSQL and Papercut containers included), so a container runtime must be running.
 [`TimeTravelSagaTests`](tests/TicketTide.EndToEndTests/TimeTravelSagaTests.cs) covers the happy path, a Ticketing
 failure that Payments retries while the fan waits, a longer outage that ends `Pending` and catches up in the
 background, a declined card, a sold-out event, and validation.

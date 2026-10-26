@@ -47,7 +47,7 @@ It saves the order after every step, so `GET /orders/{id}` shows the saga's stat
 
 ## Run it
 
-Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker (or Podman) running.
+Prerequisites: [.NET 10 SDK](https://dotnet.microsoft.com/download) and Docker Desktop or Podman Desktop running. For Podman setup, see [Exercise 0](../../exercises/setup.md).
 
 ```sh
 cd samples/epic-saga
@@ -159,7 +159,7 @@ cd samples/epic-saga
 dotnet test
 ```
 
-The tests start the whole AppHost (PostgreSQL and Papercut containers included), so Docker must be running.
+The tests start the whole AppHost (PostgreSQL and Papercut containers included), so a container runtime must be running.
 [`EpicSagaTests`](tests/TicketTide.EndToEndTests/EpicSagaTests.cs) covers the happy path, the Ticketing failure
 and its compensations, a declined card, a sold-out event, and validation.
 

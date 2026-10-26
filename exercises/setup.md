@@ -16,11 +16,29 @@ Have everything the exercises need working before you need it, so the workshop t
    dotnet --version    # 10.0.100 or later
    ```
 
-2. **Install Docker Desktop** (or Podman) and start it. Check it:
+2. **Install Docker Desktop or Podman Desktop** and start its container engine. Check it with the command for your runtime:
 
    ```sh
    docker info
+   # or
+   podman info
    ```
+
+   On Windows or macOS, Podman runs containers in a Linux virtual machine. Create one once, then start it whenever you use Podman:
+
+   ```sh
+   podman machine init    # first time only
+   podman machine start
+   ```
+
+   Aspire and its end-to-end tests use the Docker-compatible container API. On Windows, point that API at the Podman machine in PowerShell:
+
+   ```powershell
+   $pipe = podman machine inspect --format '{{.ConnectionInfo.PodmanPipe.Path}}'
+   $env:DOCKER_HOST = "npipe://" + ($pipe -replace '\\', '/')
+   ```
+
+   Keep this PowerShell session open while running the samples or tests. On other platforms, enable Podman Desktop's Docker-compatible socket, or follow [Podman Desktop's `DOCKER_HOST` instructions](https://podman-desktop.io/docs/migrating-from-docker/using-the-docker_host-environment-variable).
 
 3. **Install the Aspire CLI**, which runs the samples and their containers. Follow the [install instructions](https://aspire.dev/get-started/install-cli/) for your OS, then check it:
 
@@ -72,7 +90,7 @@ Have everything the exercises need working before you need it, so the workshop t
 | Check | You see |
 | --- | --- |
 | `dotnet --version` | 10.0.100 or later |
-| `docker info` | Server details, not an error |
+| `docker info` or `podman info` | Server details, not an error |
 | `aspire --version` | A version number |
 | `dotnet run OrderManager.cs` | A settlement report |
 | `dotnet BuildTestFormat.cs clean-architecture` | `All steps passed.` |
@@ -80,8 +98,8 @@ Have everything the exercises need working before you need it, so the workshop t
 
 ## If something doesn't work
 
-- **`docker info` fails, or the tests can't start containers:** start Docker Desktop and wait until it says it's running. On Windows, Docker Desktop needs WSL 2.
-- **Package or image downloads fail on a corporate network:** you may need your proxy settings in Docker Desktop and in the `HTTP_PROXY` / `HTTPS_PROXY` environment variables. Try a different network if you can.
+- **The runtime info command fails, or the tests can't start containers:** start Docker Desktop, or start the Podman machine with `podman machine start`. On Windows, check that `DOCKER_HOST` points to the Podman machine pipe as shown above.
+- **Package or image downloads fail on a corporate network:** you may need your proxy settings in Docker Desktop or Podman Desktop and in the `HTTP_PROXY` / `HTTPS_PROXY` environment variables. Try a different network if you can.
 - **The tests time out the first time:** the image downloads may have taken too long. Run the same command again.
 - **Port 5240 is already in use:** another sample is still running. Stop it with Ctrl+C. The samples share ports, so run one at a time.
 

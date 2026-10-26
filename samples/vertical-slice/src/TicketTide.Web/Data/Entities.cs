@@ -27,6 +27,7 @@ public enum OrderStatus
     Paid,
     Declined,
     Refunded,
+    Transferd
 }
 
 public sealed class Order
@@ -42,6 +43,7 @@ public sealed class Order
     public int Quantity { get; init; }
 
     public decimal Amount { get; init; }
+    public decimal TransferAmmout { get; init; }
 
     public OrderStatus Status { get; set; }
 
@@ -62,6 +64,7 @@ public enum TicketStatus
 {
     Paid,
     Refunded,
+    Transferd
 }
 
 public sealed class Ticket
